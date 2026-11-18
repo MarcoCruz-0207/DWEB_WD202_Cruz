@@ -2,13 +2,22 @@
 $name = 'Marco';
 $price = 2;
 $name = 'Franco';
+
+if ($name === 'Franco') {
+    $greeting = 'Welcome back ' . $name;
+} elseif ($name !== '') {
+    $greeting = 'Welcome ' . $name;
+} else {
+    $greeting = 'Welcome Guest';
+}
+
 $nutrition = [
     'fat'   => 42,
     'sugar' => 60,
     'salt'  => 3.5, 
 ];
-$nutrition['fat']   = 36;
-$nutrition['fiber'] = 2.1;
+$nutrition['fat']     = 36;
+$nutrition['fiber']   = 2.1;
 $nutrition['protein'] = 7.3;
 
 $best_sellers = ['Chocolate', 'Mints', 'Fudge', 'Licorice', 'Bubble gum', 'Toffee', 'Jelly beans',];
@@ -18,7 +27,7 @@ $offers = [
     ['name' => 'Mints', 'price' => 3, 'stock' => 66,],
     ['name' => 'Fudge', 'price' => 4, 'stock' => 97,],
     ['name' => 'Chocolate', 'price' => 2, 'stock' => 83,],
-]
+];
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +37,7 @@ $offers = [
     </head>
     <body>
         <h1>The Candy Store</h1>
-        <h2>Welcome <?php echo $name; ?></h2>
+        <h2><?php echo $greeting; ?></h2>
         <p>The cost of your candy is 
             $<?php echo $price; ?> per pack.</p>
 
@@ -41,21 +50,14 @@ $offers = [
         
         <h2>Best Sellers</h2>
         <ul>
-            <li><?php echo $best_sellers[0]; ?></li>
-            <li><?php echo $best_sellers[1]; ?></li>
-            <li><?php echo $best_sellers[2]; ?></li>
-            <li><?php echo $best_sellers[3]; ?></li>
-            <li><?php echo $best_sellers[4]; ?></li>
+            <?php for ($i = 0; $i < 5; $i++) { ?>
+                <li><?php echo $best_sellers[$i]; ?></li>
+            <?php } ?>
         </ul>
 
         <h2>Offers</h2>
-        <p><?php echo $offers[0]['name']; ?> -
-        $<?php echo $offers[0]['price']; ?></p>
-        <p><?php echo $offers[1]['name']; ?> -
-        $<?php echo $offers[1]['price']; ?></p>
-        <p><?php echo $offers[2]['name']; ?> -
-        $<?php echo $offers[2]['price']; ?></p>
-        <p><?php echo $offers[3]['name']; ?> -
-        $<?php echo $offers[3]['price']; ?></p>
+        <?php foreach ($offers as $offer) { ?>
+            <p><?php echo $offer['name']; ?> - $<?php echo $offer['price']; ?></p>
+        <?php } ?>
     </body>
 </html>
