@@ -1,3 +1,4 @@
+```php
 <?php
 declare(strict_types = 1);
 
@@ -86,15 +87,24 @@ function get_tax_due(float $price, int $quantity, int $tax = 0): float
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($candy as $product_name => $data) { ?>
+            <?php
+            // 10. Loop through each product in the $candy array
+            foreach ($candy as $product_name => $data) { ?>
+                <!-- 11. Create a table row and display the product name -->
                 <tr>
                     <td><?= $product_name ?></td>
+                    <!-- 12. Display the available stock level -->
                     <td><?= $data['stock'] ?></td>
+                    <!-- 13. Call get_reorder_message() and display the returned message -->
                     <td><?= get_reorder_message($data['stock']) ?></td>
+                    <!-- 14. Call get_total_value() and display the total stock value in Php -->
                     <td>Php <?= number_format(get_total_value($data['price'], $data['stock']), 2) ?></td>
+                    <!-- 15. Call get_tax_due() and display the total tax due in Php -->
                     <td>Php <?= number_format(get_tax_due($data['price'], $data['stock'], $tax), 2) ?></td>
                 </tr>
-            <?php } ?>
+            <?php
+            // 16. End the foreach loop code block
+            } ?>
         </tbody>
     </table>
 
@@ -118,3 +128,5 @@ function get_tax_due(float $price, int $quantity, int $tax = 0): float
     <?php } ?>
 </body>
 </html>
+
+```
